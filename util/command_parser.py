@@ -1,14 +1,10 @@
-import commands.roll as roll
-import commands.robeandwizardhat as robeandwizardhat 
 import util.slack_api as slack_api
 import re
 
 from common import bot_id
+from commands.commands import commands
 
 MENTION_REGEX = "^<@(|[WU].+?)>(.*)"
-
-commands = { "roll" : roll.handle_command,
-            "i put on my robe and wizard hat" : robeandwizardhat.handle_command }
 
 def parse_bot_commands(user, text):
     user_id, message = parse_direct_mention(text)
