@@ -1,5 +1,6 @@
 import slack
 import util.slack_api as slack_api
+import dice
 
 @slack.RTMClient.run_on(event='message')
 def on_message(**payload):
@@ -20,3 +21,11 @@ def on_message(**payload):
                 username="WIZARD OUTFITTER",
                 channel=channel_id,
                 text=f"Nice <@{user}>!")
+
+        if 'roll' in data['text']:
+            roll_string = data['text'].split("roll")[1]
+            roll = dice.roll(roll_string)
+            slack_api.postMessage(
+                username="GAMBLIN MAN",
+                channel=channel_id,
+                text=f"<@{user}> rolled {roll}!")
