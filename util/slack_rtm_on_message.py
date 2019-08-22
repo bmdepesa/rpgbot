@@ -1,5 +1,6 @@
 import slack
 import util.slack_api as slack_api
+import util.command_parser as command_parser
 import dice
 
 @slack.RTMClient.run_on(event='message')
@@ -16,16 +17,6 @@ def on_message(**payload):
     print(data)
 
     if user:
-        if 'I PUT ON MY ROBE AND WIZARD HAT' in data['text']:
-            slack_api.postMessage(
-                username="WIZARD OUTFITTER",
-                channel=channel_id,
-                text=f"Nice <@{user}>!")
+        command_parser.parse_bot_commands(user, data['text'])
 
-        if 'roll' in data['text']:
-            roll_string = data['text'].split("roll")[1]
-            roll = dice.roll(roll_string)
-            slack_api.postMessage(
-                username="GAMBLIN MAN",
-                channel=channel_id,
-                text=f"<@{user}> rolled {roll}!")
+  
