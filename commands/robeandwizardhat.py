@@ -5,3 +5,4 @@ def handle_command(command):
     slack_api.postMessage(
                 username="WIZARD OUTFITTER",
                 text=f"Nice <@{user}>!")
+    
