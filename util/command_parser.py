@@ -18,13 +18,13 @@ def parse_direct_mention(message_text):
 
 def handle_command(user, text):
     default_response = "Not sure what you mean."
-    response = None
 
-    for command in commands.keys():
-        if text.lower().startswith(command):
-            command_to_execute = commands.get(command)
-            command_to_execute({'user' : user, 'message' : text})
-            return
-    
-    slack_api.postMessage(default_response)
+    if text is not None:
+        for command in commands.keys():
+                if text.lower().startswith(command):
+                command_to_execute = commands.get(command)
+                command_to_execute({'user' : user, 'message' : text})
+                return
+        
+        slack_api.postMessage(default_response)
     
