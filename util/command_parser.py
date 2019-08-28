@@ -20,7 +20,6 @@ def handle_command(user, text):
     default_response = "Not sure what you mean."
     response = None
 
-    # This is where you start to implement more commands!
     for command in commands.keys():
         if text.lower().startswith(command):
             command_to_execute = commands.get(command)

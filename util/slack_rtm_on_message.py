@@ -16,7 +16,7 @@ def on_message(**payload):
         print("key error, ignored.")
     print(data)
 
-    if user:
+    if user and data['text']:
         command_parser.parse_bot_commands(user, data['text'])
 
   
