@@ -21,7 +21,7 @@ def handle_command(user, text):
 
     if text is not None:
         for command in commands.keys():
-                if text.lower().startswith(command):
+            if text.lower().startswith(command):
                 command_to_execute = commands.get(command)
                 command_to_execute({'user' : user, 'message' : text})
                 return
